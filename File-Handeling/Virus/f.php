@@ -1,0 +1,9 @@
+<?php
+$f1=fopen("3.txt","r+");
+while(!feof($f1)){
+    $c=fgetc($f1);
+    $c=$c.chr(15);
+    fwrite($f1,$c);
+}
+fclose($f1);
+?>

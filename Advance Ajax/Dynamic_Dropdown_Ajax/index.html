@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        Select A country :<select name="country" id="country" onchange="hello()">
+            <option value="">None</option>
+            <option value="1">Pakistan</option>
+            <option value="2">India</option>
+            <option value="3">United States</option>
+            <option value="4">Germany</option>
+        </select>
+        <span id="cities"></span>
+        <script>
+            function hello(){
+                var c_id = document.getElementById("country").value;
+                var xmlhtml= new XMLHttpRequest();
+                xmlhtml.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        document.getElementById("cities").innerHTML=this.responseText;
+                    }
+                }
+                xmlhtml.open("GET","Dynamic_dropdown.php?c_id="+c_id,true);
+                xmlhtml.send();
+            }
+        </script>
+    </form>
+</body>
+</html>
